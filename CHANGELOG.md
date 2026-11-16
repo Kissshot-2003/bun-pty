@@ -5,7 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.6.1] - 2026-10-31
+## [0.6.1] - 2026-11-16
+
+### Changed
+- The repository moved to [sursatech/bun-pty](https://github.com/sursatech/bun-pty); old `sursaone/bun-pty` links and clones redirect
 
 ### Fixed
 - Output the child writes before the first `onData` listener subscribes is no longer lost (#53, #54)
@@ -130,7 +133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Fix spaces in Windows exe path handling
   - Add Windows-specific tests
   - Add compile test script to verify bun build --compile works
-  - Fixes: https://github.com/sursaone/bun-pty/issues/19
+  - Fixes: https://github.com/sursatech/bun-pty/issues/19
 
 ## [0.4.3] - 2025-12-30
 

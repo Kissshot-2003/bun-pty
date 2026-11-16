@@ -50,7 +50,7 @@ function resolveLibPath(): string {
 	// Bun evaluates process.platform and process.arch at compile time and only
 	// bundles the file for the target platform. The ternary MUST be inline
 	// in the template literal for Bun's static analysis to work.
-	// See: https://github.com/sursaone/bun-pty/issues/19
+	// See: https://github.com/sursatech/bun-pty/issues/19
 	try {
 		// @ts-ignore - require returns path for binary files in Bun
 		const embeddedPath = require(`../rust-pty/target/release/${process.platform === "win32" ? (process.arch === "arm64" ? "rust_pty_arm64.dll" : "rust_pty.dll") : process.platform === "darwin" ? (process.arch === "arm64" ? "librust_pty_arm64.dylib" : "librust_pty.dylib") : process.arch === "arm64" ? "librust_pty_arm64.so" : "librust_pty.so"}`);

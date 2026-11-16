@@ -7,11 +7,11 @@
 	"type": "module",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/sursaone/bun-pty.git"
+		"url": "git+https://github.com/sursatech/bun-pty.git"
 	},
-	"homepage": "https://github.com/sursaone/bun-pty#readme",
+	"homepage": "https://github.com/sursatech/bun-pty#readme",
 	"bugs": {
-		"url": "https://github.com/sursaone/bun-pty/issues"
+		"url": "https://github.com/sursatech/bun-pty/issues"
 	},
 	"author": {
 		"name": "Dilip Thapa",

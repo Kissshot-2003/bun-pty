@@ -225,7 +225,7 @@ If you want to build the package from source:
 
 ```bash
 # Clone the repository
-git clone https://github.com/sursaone/bun-pty.git
+git clone https://github.com/sursatech/bun-pty.git
 cd bun-pty
 
 # Install dependencies
