@@ -11,8 +11,8 @@ export function libraryFilenames(platform: typeof process.platform, arch: string
 	}
 	if (platform === "freebsd") {
 		return arch === "arm64"
-			? ["librust_pty_arm64_freebsd.so", "librust_pty_freebsd.so"]
-			: ["librust_pty_freebsd.so"];
+			? ["librust_pty_arm64_freebsd.so", "librust_pty_freebsd.so", "librust_pty.so"]
+			: ["librust_pty_freebsd.so", "librust_pty.so"];
 	}
 	if (musl) {
 		return arch === "arm64"
