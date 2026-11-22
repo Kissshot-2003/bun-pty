@@ -102,8 +102,14 @@ jobs:
         with:
           release: "15.0"
           usesh: true
-          prepare: pkg install -y rust
+          # pkg's rust needs FBSD_1.9 libc, which the 15.0 image lacks.
+          # Install the official toolchain via rustup instead.
+          prepare: |
+            fetch -o /tmp/rustup-init https://static.rust-lang.org/rustup/dist/x86_64-unknown-freebsd/rustup-init
+            chmod +x /tmp/rustup-init
+            /tmp/rustup-init -y --default-toolchain stable --profile minimal
           run: |
+            . "$HOME/.cargo/env"
             cd rust-pty
             cargo build --release
             mkdir -p ../out
