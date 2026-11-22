@@ -51,6 +51,11 @@ jobs:
             target: aarch64-pc-windows-msvc
             out:    rust_pty_arm64.dll
             rustflags: -C target-feature=+crt-static
+          # FreeBSD has no GitHub-hosted runner, so build it in a FreeBSD VM.
+          - runner: ubuntu-22.04
+            target: x86_64-unknown-freebsd
+            freebsd: true
+            out:    librust_pty_freebsd.so
 
     steps:
       - uses: actions/checkout@v7
@@ -79,14 +84,28 @@ jobs:
           cargo zigbuild --release --target ${{ matrix.zigbuild_target }}
 
       - name: Build rust-pty
-        if: "!matrix.zigbuild_target"
+        if: "!matrix.zigbuild_target && !matrix.freebsd"
         env:
           RUSTFLAGS: ${{ matrix.rustflags }}
         run: |
           cd rust-pty
           cargo build --release --target ${{ matrix.target }}
 
+      - name: Build rust-pty (FreeBSD)
+        if: matrix.freebsd
+        uses: vmactions/freebsd-vm@v1
+        with:
+          release: "15.0"
+          usesh: true
+          prepare: pkg install -y rust
+          run: |
+            cd rust-pty
+            cargo build --release
+            mkdir -p ../out
+            cp target/release/librust_pty.so "../out/${{ matrix.out }}"
+
       - name: Collect artefact
+        if: "!matrix.freebsd"
         shell: bash
         run: |
           mkdir -p out
